@@ -1,6 +1,6 @@
 # Smart Waste Management & Bin Level Detection System
 
-**Industry-oriented IoT project** to monitor garbage bin fill-level using ESP32 + HC-SR04, publish data via MQTT, visualize in Node-RED and ThingSpeak, and trigger alerts when bins are nearly full.
+Industry-oriented IoT project to monitor garbage bin fill-level using ESP32 + HC-SR04, publish data via MQTT, visualize in Node-RED and ThingSpeak, and trigger alerts when bins are nearly full.
 
 ## Features
 - Real-time fill-level measurement (HC-SR04)
@@ -9,9 +9,6 @@
 - Node-RED dashboard + email/SMS alerts
 - ThingSpeak time-series analytics (optional)
 - Battery + solar deployment recommendations
-
-## Folder structure
-(See repo root for full structure)
 
 ## Quick Start
 1. Clone repo.
@@ -30,8 +27,8 @@
 - MQ-135 analog -> ADC pin (requires calibration)
 
 ## Expected Output
-- JSON payloads published to `smartbin/node1/data`:
-  `{"node":"node1","level":82.0,"distance_cm":5.4,"temp":29.4,"hum":47.1,"ts":1700001200}`
+JSON payloads published to `smartbin/node1/data`:
+`{"node":"node1","level":82.0,"distance_cm":5.4,"temp":29.4,"hum":47.1,"ts":1700001200}`
 
 ## Troubleshooting
 - WiFi fails: check credentials & channel interference.
@@ -40,7 +37,3 @@
 
 ## License
 MIT — see `LICENSE_MIT.txt`.
-
-## Credits
-Based on common industry best practices and user-supplied brief. :contentReference[oaicite:1]{index=1}
-

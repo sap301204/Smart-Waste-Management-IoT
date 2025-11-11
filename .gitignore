@@ -1,0 +1,6 @@
+/.vscode
+/.idea
+/build
+/.pioenvs
+*.zip
+.DS_Store

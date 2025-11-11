@@ -1,0 +1,142 @@
+[
+  {
+    "id": "mqtt_in_1",
+    "type": "mqtt in",
+    "z": "tab1",
+    "name": "MQTT In",
+    "topic": "smartbin/#",
+    "broker": "mqtt_broker",
+    "x": 140,
+    "y": 80,
+    "wires": [
+      [
+        "json_parse"
+      ]
+    ]
+  },
+  {
+    "id": "json_parse",
+    "type": "json",
+    "z": "tab1",
+    "name": "Parse JSON",
+    "x": 340,
+    "y": 80,
+    "wires": [
+      [
+        "normalize"
+      ]
+    ]
+  },
+  {
+    "id": "normalize",
+    "type": "function",
+    "z": "tab1",
+    "name": "Normalize",
+    "func": "msg.payload = (typeof msg.payload === 'string') ? JSON.parse(msg.payload) : msg.payload;\nreturn msg;",
+    "x": 540,
+    "y": 80,
+    "wires": [
+      [
+        "gauge",
+        "chart",
+        "switch_alert"
+      ]
+    ]
+  },
+  {
+    "id": "gauge",
+    "type": "ui_gauge",
+    "z": "tab1",
+    "name": "Bin Level Gauge",
+    "group": "dashboard_group",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "gtype": "gage",
+    "title": "Bin Level",
+    "label": "%",
+    "format": "{{value}}",
+    "min": 0,
+    "max": "100",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "x": 760,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "chart",
+    "type": "ui_chart",
+    "z": "tab1",
+    "name": "Level Chart",
+    "group": "dashboard_group",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "x": 760,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "switch_alert",
+    "type": "switch",
+    "z": "tab1",
+    "name": "Check >80%",
+    "property": "payload.level",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gt",
+        "v": "80",
+        "vt": "num"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 760,
+    "y": 200,
+    "wires": [
+      [
+        "email_node"
+      ]
+    ]
+  },
+  {
+    "id": "email_node",
+    "type": "e-mail",
+    "z": "tab1",
+    "name": "Send Email",
+    "server": "smtp.example.com",
+    "port": "587",
+    "secure": false,
+    "tls": "",
+    "dname": "",
+    "x": 980,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "mqtt_broker",
+    "type": "mqtt-broker",
+    "z": "",
+    "name": "HiveMQ Public",
+    "broker": "broker.hivemq.com",
+    "port": "1883",
+    "tls": ""
+  },
+  {
+    "id": "dashboard_group",
+    "type": "ui_group",
+    "z": "",
+    "name": "SmartBin Group",
+    "tab": "Home",
+    "order": 1,
+    "disp": true,
+    "width": "6",
+    "collapse": false
+  }
+]

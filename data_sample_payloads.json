@@ -1,0 +1,26 @@
+[
+  {
+    "node": "node1",
+    "level": 12.5,
+    "distance_cm": 26.3,
+    "temp": 29.1,
+    "hum": 45.2,
+    "ts": 1700000000
+  },
+  {
+    "node": "node1",
+    "level": 41.7,
+    "distance_cm": 17.5,
+    "temp": 29.0,
+    "hum": 46.0,
+    "ts": 1700000600
+  },
+  {
+    "node": "node1",
+    "level": 82.0,
+    "distance_cm": 5.4,
+    "temp": 29.4,
+    "hum": 47.1,
+    "ts": 1700001200
+  }
+]
