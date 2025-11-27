@@ -1,0 +1,36 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  python-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: pip install flake8 jsonschema
+      - name: Lint Python simulator
+        run: flake8 simulate_nodes.py || true
+  node-red-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Validate JSON
+        run: python -c "import json,sys; json.load(open('cloud/node-red/flows.json')); print('OK')"
+  dataset-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check CSV parse
+        run: python - <<'PY'
+import csv
+rows=0
+with open('dataset/sample_readings.csv') as f:
+  r=csv.DictReader(f)
+  for row in r:
+    rows+=1
+print('Rows:', rows)
+assert rows>=200
+PY

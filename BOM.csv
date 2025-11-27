@@ -1,0 +1,13 @@
+part,description,example_sku,supplier,approx_price_usd
+ESP32-DEVKITC,ESP32 Devkit V1 module,ESP32-DEVKITC-32U,Amazon/Adafruit,6.50
+HC-SR04,Ultrasonic distance sensor,HC-SR04,Amazon,2.00
+DHT22,Temp & Humidity sensor,DHT22,Amazon,4.50
+MQ-135,Air quality gas sensor,MQ-135,Amazon,3.50
+TP4056,Li-ion charger board (optional),TP4056,Amazon,1.20
+18650 battery,3.7V Li-ion 3000mAh,18650,Amazon,4.00
+Solar panel,5V 2W small,5V-2W,Amazon,8.00
+Level shifter,for 5V->3.3V echo,Voltage divider (10k/20k),local,0.10
+Breadboard/jumpers,unused,NA,local,6.00
+Jumper wires,20pcs,NA,local,2.00
+Enclosure,IP65 plastic,NA,local,8.00
+Total estimate,,,,~45-60

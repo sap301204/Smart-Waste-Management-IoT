@@ -1,6 +1,19 @@
-/.vscode
-/.idea
-/build
-/.pioenvs
-*.zip
+# Arduino / PlatformIO
+build/
+.pio/
+*.bin
+*.elf
+*.hex
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Node-RED
+flows_*.json
+
+# OS
 .DS_Store
+Thumbs.db
